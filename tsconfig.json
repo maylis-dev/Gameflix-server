@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "moduleDetection": "force",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "types": ["node"]
+  },
+  "include": [
+  "src/**/*",
+  "prisma.config.ts",
+  "error-handling/**/*",
+  "routes/**/*"
+]
+}
