@@ -16,204 +16,36 @@ datasource db {
 
 
 
-model User {
-  id            Int      @id @default(autoincrement())
-  email         String   @unique
-  password      String
-  username      String?
-  photoProfile  String?
-  bio           String?
-  gender        String?
-  preferences   String?
-  createdAt     DateTime @default(now())
 
-  // Relations
-  comments      Comment[]
-  likes         Like[]
-  memberships   GroupMember[]
-  chats         ChatMember[]
-  messages      Message[]
-  events        EventMember[]
 
-  // Groups créés/admin
-  groupsOwned   Group[] @relation("GroupAdmin")
+//model game
 
-  // Events créés
-  createdEvents Event[] @relation("EventCreator")
-}
-
-model Place {
+model Game {
   id          Int      @id @default(autoincrement())
   name        String
   description String?
-  country     String
-  city        String
-  address     String?
+  genre       String?
+  platform    String?
+  shopLink    String?
+  releaseDate DateTime?
+  producer    String?
+  photoGame   String?
+  studio      String?
+  rating      Float?
+  trailerUrl  String?
+  status      String?  @default("available") 
+  language    String?
+  popularity   Int      @default(0)
+  price       Float?
+  istrending   Boolean  @default(false)
 
-  // 1 = cheap / 2 = medium / 3 = expensive
-  priceLevel  Int?
 
-  // calm / noisy / social / silent
-  ambiance    String?
-
-  photoPlace  String?
-
-  createdAt   DateTime @default(now())
-
-  // Relations
-  comments    Comment[]
-  likes       Like[]
-  events      Event[]
-}
-
-model Comment {
-  id        Int      @id @default(autoincrement())
-  content   String
-  createdAt DateTime @default(now())
-
-  // Auteur
-  user      User @relation(fields: [userId], references: [id])
-  userId    Int
-
-  // Place commentée
-  place     Place @relation(fields: [placeId], references: [id])
-  placeId   Int
-}
-
-model Like {
-  user      User @relation(fields: [userId], references: [id])
-  userId    Int
-
-  place     Place @relation(fields: [placeId], references: [id])
-  placeId   Int
-
-  createdAt DateTime @default(now())
-
-  @@id([userId, placeId])
-}
-
-model Group {
-  id          Int      @id @default(autoincrement())
-  name        String
-  description String?
-
-  // groupe public ou privé
-  isPrivate   Boolean  @default(false)
-
-  // code pour rejoindre groupe privé
-  joinCode    String?
-
-  photoGroup  String?
 
   createdAt   DateTime @default(now())
-
-  // Admin du groupe
-  adminId     Int
-  admin       User @relation("GroupAdmin", fields: [adminId], references: [id])
-
-  // Relations
-  members     GroupMember[]
-  messages    Message[] @relation("GroupMessages")
 }
 
-model GroupMember {
-  user      User @relation(fields: [userId], references: [id])
-  userId    Int
 
-  group     Group @relation(fields: [groupId], references: [id])
-  groupId   Int
 
-  // admin / member
-  role      String @default("member")
 
-  joinedAt  DateTime @default(now())
 
-  @@id([userId, groupId])
-}
 
-model Chat {
-  id        Int      @id @default(autoincrement())
-  name      String?
-
-  createdAt DateTime @default(now())
-
-  // Relations
-  members   ChatMember[]
-  messages  Message[] @relation("ChatMessages")
-
-  // Chat lié à un event (optionnel)
-  event     Event? @relation("EventChat")
-}
-
-model ChatMember {
-  user    User @relation(fields: [userId], references: [id])
-  userId  Int
-
-  chat    Chat @relation(fields: [chatId], references: [id])
-  chatId  Int
-
-  joinedAt DateTime @default(now())
-
-  @@id([userId, chatId])
-}
-
-model Message {
-  id        Int      @id @default(autoincrement())
-  content   String
-  createdAt DateTime @default(now())
-
-  // Auteur
-  user      User @relation(fields: [userId], references: [id])
-  userId    Int
-
-  // Message dans un groupe
-  group      Group? @relation("GroupMessages", fields: [groupId], references: [id])
-  groupId    Int?
-
-  // Message dans un chat
-  chat       Chat? @relation("ChatMessages", fields: [chatId], references: [id])
-  chatId     Int?
-}
-
-model Event {
-  id          Int      @id @default(autoincrement())
-  title       String
-  description String?
-
-  createdAt   DateTime @default(now())
-
-  // Date/heure meetup
-  time        DateTime
-
-  // calm / noisy / medium
-  noiseLevel  String?
-
-  maxPeople   Int?
-
-  // Place liée à l'event
-  placeId     Int?
-  place       Place? @relation(fields: [placeId], references: [id])
-
-  // Créateur event
-  creatorId   Int
-  creator     User @relation("EventCreator", fields: [creatorId], references: [id])
-
-  // Participants
-  members     EventMember[]
-
-  // Chat de l'event
-  chatId      Int? @unique
-  chat        Chat? @relation("EventChat", fields: [chatId], references: [id])
-}
-
-model EventMember {
-  user    User @relation(fields: [userId], references: [id])
-  userId  Int
-
-  event   Event @relation(fields: [eventId], references: [id])
-  eventId Int
-
-  joinedAt DateTime @default(now())
-
-  @@id([userId, eventId])
-}
