@@ -29,7 +29,7 @@ model Game {
   shopLink    String?
   releaseDate DateTime?
   producer    String?
-  photoGame   String?
+  photoGame   String
   studio      String?
   rating      Float?
   trailerUrl  String?
