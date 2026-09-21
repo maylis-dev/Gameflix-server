@@ -23,8 +23,8 @@ app.get("/", async (req, res) => {
 	}
 });
 
-// app.listen(5005, () => {
-//   console.log("Server is running on http://localhost:5005");
-// });
+app.listen(5005, () => {
+	console.log("Server is running on http://localhost:5005");
+});
 
 export default app;
