@@ -18,7 +18,7 @@ app.get("/", async (req, res) => {
 	} catch (error) {
 		console.log("GET GAMES ERROR:", error);
 		res.status(500).json({
-			error: "Failed to fetch games",
+			error: String(error),
 		});
 	}
 });
