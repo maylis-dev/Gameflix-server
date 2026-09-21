@@ -21,7 +21,7 @@
 	},
 	"scripts": {
 		"dev": "ts-node-dev src/index.ts",
-		"build": "prisma generate"
+		"postinstall": "prisma generate"
 	},
 	"prisma": {
 		"seed": "ts-node prisma/seed.ts"
