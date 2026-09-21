@@ -19,6 +19,9 @@ app.get("/", async (req, res) => {
 		console.log("GET GAMES ERROR:", error);
 		res.status(500).json({
 			error: String(error),
+			"DATABASE_URL reçue par Vercel": process.env.DATABASE_URL,
+			url_start: process.env.DATABASE_URL?.substring(0, 20),
+			url_end: process.env.DATABASE_URL?.slice(-20),
 		});
 	}
 });
