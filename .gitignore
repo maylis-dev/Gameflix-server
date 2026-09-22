@@ -26,3 +26,4 @@ ehthumbs.db
 /src/generated/prisma
 
 /src/generated/prisma
+.vercel

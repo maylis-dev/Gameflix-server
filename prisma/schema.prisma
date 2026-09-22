@@ -21,7 +21,6 @@ model Game {
   headerImage String?
   studio      String?
   studiophoto String?
-  
   rating      Float?
   trailerUrl  String?
   status      String?   @default("available")
