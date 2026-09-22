@@ -187,7 +187,7 @@ async function main() {
 					"https://res.cloudinary.com/dwzu86xf5/image/upload/v1789139460/ee9bd8073a31663328cd3d3f3ed824ad_osadlo.png",
 				studio: "Capcom",
 				studiophoto:
-					"https://res.cloudinary.com/dwzu86xf5/image/upload/v1789574298/images_xmitc7.png",
+					"https://res.cloudinary.com/dwzu86xf5/image/upload/v1790000102/133379_pk7nuv.png",
 				rating: 4.9,
 				trailerUrl:
 					"https://www.youtube.com/results?search_query=Resident+Evil+4+Remake+trailer",
@@ -463,9 +463,9 @@ async function main() {
 				releaseDate: new Date("2022-02-25"),
 				producer: "Bandai Namco Entertainment",
 				photoGame:
-					"https://res.cloudinary.com/dwzu86xf5/image/upload/v1789561381/da12a36a0a1fc7cf0d4142aae11e3349_uqylpu.png",
+					"https://res.cloudinary.com/dwzu86xf5/image/upload/v1789561381/a0abf0396a718b8982fce0b80181d8cb_jmnadq.png",
 				headerImage:
-					"https://res.cloudinary.com/dwzu86xf5/image/upload/v1789561381/cf2e63c20b34ae2070f9ed831e83f8fc_svvshm.png",
+					"https://res.cloudinary.com/dwzu86xf5/image/upload/v1789561380/f5ed13775a70b09a08ffcf0fbecb9efd_coy5ak.png",
 				studio: "FromSoftware",
 				studiophoto:
 					"https://res.cloudinary.com/dwzu86xf5/image/upload/v1789574294/FromSoftware-Logo-Dark-Thumb-Square_ojvpbm.png",
